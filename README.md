@@ -3,7 +3,7 @@
 * [Objectives](#Objectives)
 * [Proposed System](#Proposed_System)
 * [Database Modules](#Modules)
-* [Contact us](#COntact_us)
+* [Contact us](#Contact_us)
 
 ## Introduction
 Blogging has become such a mania that a new blog is being created every second of every minute of every hour of every day. A blog is your best bet for a voice among the online crowd. Blogs were usually the work of a single individual occasionally of a small group. and often covered a single subject.
@@ -51,7 +51,7 @@ This web-app is a blogging website where we are using type clustering method to 
   * Node ID​
 
   * Keywords​
-## Contact Us
+## Contact_us
 For contributing or want to give ur suggestion on this project, email us on :- luharukashubham4@gmail.com
 
 
