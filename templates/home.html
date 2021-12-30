@@ -8,10 +8,10 @@
 
     
     <!---------------------------Font File---------------------------->
-    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/all.css') }}">
 
     <!-------------------------CSS File-------------------------------->
-    <link rel="stylesheet" href="./css/Styles.css">
+    <link rel="stylesheet" href= "{{ url_for('static',filename='css/Styles.css') }}">
 </head>
 <body>
     
@@ -27,6 +27,6 @@
           </div>  
         </nav>
     <!----------x--------------Navigation bar-------------------x--------------------->
-    <script src="./js/main.js"></script>
+    <script  href= "{{ url_for('static',filename='js/main.js') }}"></script>
 </body>
 </html>
