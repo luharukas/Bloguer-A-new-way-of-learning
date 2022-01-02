@@ -32,6 +32,8 @@
 
     <!--Custom styles-->
     <link rel="stylesheet" href= "{{ url_for('static',filename='css/signupdesc.css') }}" />
+
+    <!--{{ url_for('static',filename='css/signupdesc.css') }}-->
   </head>
   <body>
     <div class="container">
@@ -75,11 +77,20 @@
                   placeholder="phone number"
                 />
               </div>
-              
+              <div class="input-group form-group">
+                <input type="text" class="form-control" placeholder="Organization" />
+              </div>
+              <div class="input-group form-group">
+                <input type="text" class="form-control" placeholder="Github Account" />
+              </div>
+              <div class="input-group form-group">
+                <input type="text" class="form-control" placeholder="Linked In Account" />
+              </div>
               <label>Birth Date</label>
               <div class="row">
                 <div class="col-xs-4 col-md-4">
                   <select name="month" class="form-control input-lg">
+                    <option value="01">Month</option>
                     <option value="01">Jan</option>
                     <option value="02">Feb</option>
                     <option value="03">Mar</option>
@@ -96,6 +107,7 @@
                 </div>
                 <div class="col-xs-4 col-md-4">
                   <select name="day" class="form-control input-lg">
+                    <option value="1">Day</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -131,6 +143,7 @@
                 </div>
                 <div class="col-xs-4 col-md-4">
                   <select name="year" class="form-control input-lg">
+                    <option value="1935">Yaer</option>
                     <option value="1935">1935</option>
                     <option value="1936">1936</option>
                     <option value="1937">1937</option>
@@ -224,6 +237,7 @@
                 Female
               </label>
             </div>
+            <span id="message" style="color: red;" class="message" ><h6></h6></span>
               <div class="form-group">
                 <input
                   type="submit"

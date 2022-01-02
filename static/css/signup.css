@@ -11,11 +11,12 @@ font-family: 'Numans', sans-serif;
 .container{
 height: 100%;
 align-content: center;
+position: relative;
 }
 
 .card{
-height: 370px;
-margin-top: auto;
+height: auto;
+margin-top: 150px;
 margin-bottom: auto;
 width: 400px;
 background-color: #d6c7a9;
