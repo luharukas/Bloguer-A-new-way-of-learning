@@ -14,7 +14,7 @@ align-content: center;
 }
 
 .card{
-height: 370px;
+
 margin-top: auto;
 margin-bottom: auto;
 width: 400px;
@@ -87,3 +87,12 @@ margin-left: 4px;
 color: white;
 }
 
+.form-group h6{
+    padding-top: 15px;
+    color: red;
+    visibility: hidden;
+}
+
+.form-group.error h6 {
+	visibility: visible;
+}
