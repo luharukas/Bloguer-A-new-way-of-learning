@@ -90,7 +90,7 @@ color: white;
 .form-group h6{
     padding-top: 15px;
     color: red;
-    visibility: hidden;
+    
 }
 
 .form-group.error h6 {

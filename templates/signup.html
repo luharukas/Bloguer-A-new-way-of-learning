@@ -21,7 +21,7 @@
     <!--{{ url_for('static',filename='css/signup.css') }}-->
 </head>
 <body>
-    
+    <form onsubmit="return myfun()">
     <div class="container">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
@@ -42,14 +42,15 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" name="signup_password" class="form-control" placeholder="password" required>
+                            <input type="password"  id="pass1" name="signup_password" class="form-control" placeholder="password" required>
                         </div>
                         <div class="input-group form-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" name="signup_re_enter_password" class="form-control" placeholder="re-enter password">
+                            <input type="password" id="pass2" name="signup_re_enter_password" class="form-control" placeholder="re-enter password" required>
                         </div>
+                        <span id="message" style="color: red;" class="message" ><h6></h6></span>
                         <div class="form-group">
                             <input type="submit" value="Next" class="btn float-right login_btn">
                         </div>
@@ -67,6 +68,7 @@
         </div>
         
     </div>
-
+</form>
+<script src="/static/js/signup.js"></script>
 </body>
 </html>
