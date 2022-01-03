@@ -44,7 +44,7 @@
           </div>
 
           <div class="card-body">
-            <form>
+            <form action="/signing" method="post">
               <div class="input-group form-group">
                 <div class="row">
                   <div class="col-xs-6 col-md-6">
@@ -73,23 +73,25 @@
               <div class="input-group form-group">
                 <input
                   type="number"
+                  name="phone_no"
                   class="form-control"
                   placeholder="phone number"
+                  
                 />
               </div>
               <div class="input-group form-group">
-                <input type="text" class="form-control" placeholder="Organization" />
+                <input type="text" name="organization" class="form-control" placeholder="Organization" />
               </div>
               <div class="input-group form-group">
-                <input type="text" class="form-control" placeholder="Github Account" />
+                <input type="text" name="github" class="form-control" placeholder="Github Account" />
               </div>
               <div class="input-group form-group">
-                <input type="text" class="form-control" placeholder="Linked In Account" />
+                <input type="text" name="linkedin" class="form-control" placeholder="LinkedIn Account" />
               </div>
               <label>Birth Date</label>
               <div class="row">
                 <div class="col-xs-4 col-md-4">
-                  <select name="month" class="form-control input-lg">
+                  <select name="month" class="form-control input-lg" >
                     <option value="01">Month</option>
                     <option value="01">Jan</option>
                     <option value="02">Feb</option>
