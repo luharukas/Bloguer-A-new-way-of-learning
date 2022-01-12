@@ -24,14 +24,20 @@
 
     <link
       href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-      rel="stylesheet"
-      id="bootstrap-css"
     />
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/css/bootstrap-select.min.css"
+    />
 
     <!--Custom styles-->
-    <link rel="stylesheet" href= "{{ url_for('static',filename='css/signupdesc.css') }}" />
+    <link rel="stylesheet" href="/static/css/signupdesc.css" />
 
     <!--{{ url_for('static',filename='css/signupdesc.css') }}-->
   </head>
@@ -54,6 +60,7 @@
                       value=""
                       class="form-control input-lg"
                       placeholder="First Name"
+                      required
                     />
                   </div>
                   <div class="col-xs-6 col-md-6">
@@ -63,6 +70,7 @@
                       value=""
                       class="form-control input-lg"
                       placeholder="Last Name"
+                      required
                     />
                   </div>
                 </div>
@@ -76,22 +84,60 @@
                   name="phone_no"
                   class="form-control"
                   placeholder="phone number"
-                  
+                  required
                 />
               </div>
               <div class="input-group form-group">
-                <input type="text" name="organization" class="form-control" placeholder="Organization" />
+                <input
+                  type="text"
+                  name="organization"
+                  class="form-control"
+                  placeholder="Organization"
+                  required
+                />
+              </div>
+              <div class="multi_select_box input-group form-group">
+                <select
+                  id="members"
+                  class="multi_select"
+                  multiple
+                  data-live-search="true"
+                  title="Prefered Topics"
+                  required
+                >
+                  <option>Java</option>
+                  <option>C</option>
+                  <option>C++</option>
+                  <option>Python</option>
+                  <option>Machine Learning</option>
+                  <option>Quantum Computing</option>
+                  <option>Artificial Intelligence</option>
+                  <option>Data Structure</option>
+                  <option>Algorithms</option>
+                </select>
               </div>
               <div class="input-group form-group">
-                <input type="text" name="github" class="form-control" placeholder="Github Account" />
+                <input
+                  type="text"
+                  name="github"
+                  class="form-control"
+                  placeholder="Github Account"
+                  required
+                />
               </div>
               <div class="input-group form-group">
-                <input type="text" name="linkedin" class="form-control" placeholder="LinkedIn Account" />
+                <input
+                  type="text"
+                  name="linkedin"
+                  class="form-control"
+                  placeholder="LinkedIn Account"
+                  required
+                />
               </div>
               <label>Birth Date</label>
               <div class="row">
                 <div class="col-xs-4 col-md-4">
-                  <select name="month" class="form-control input-lg" >
+                  <select name="month" class="form-control input-lg" required>
                     <option value="01">Month</option>
                     <option value="01">Jan</option>
                     <option value="02">Feb</option>
@@ -108,7 +154,7 @@
                   </select>
                 </div>
                 <div class="col-xs-4 col-md-4">
-                  <select name="day" class="form-control input-lg">
+                  <select name="day" class="form-control input-lg" required>
                     <option value="1">Day</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -144,8 +190,8 @@
                   </select>
                 </div>
                 <div class="col-xs-4 col-md-4">
-                  <select name="year" class="form-control input-lg">
-                    <option value="1935">Yaer</option>
+                  <select name="year" class="form-control input-lg" required>
+                    <option value="1935">Year</option>
                     <option value="1935">1935</option>
                     <option value="1936">1936</option>
                     <option value="1937">1937</option>
@@ -228,18 +274,20 @@
                   </select>
                 </div>
               </div>
-              <br>
+              <br />
               <div>
-              <label>Gender : </label>
-              <label class="radio-inline">
-                <input type="radio" name="gender" value="M" id="male" /> Male
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="gender" value="F" id="female" />
-                Female
-              </label>
-            </div>
-            <span id="message" style="color: red;" class="message" ><h6></h6></span>
+                <label>Gender : </label>
+                <label class="radio-inline">
+                  <input type="radio" name="gender" value="M" id="male" /> Male
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="gender" value="F" id="female" />
+                  Female
+                </label>
+              </div>
+              <span id="message" style="color: red" class="message"
+                ><h6></h6
+              ></span>
               <div class="form-group">
                 <input
                   type="submit"
@@ -251,6 +299,14 @@
           </div>
         </div>
       </div>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.js"
+      ></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+      <script src="/static/js/signupdesc.js"></script>
     </div>
   </body>
 </html>
