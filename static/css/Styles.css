@@ -1,77 +1,104 @@
-
-@import url('../css/fonts.css');
-
-html, body{
-    margin: 0%;
-    box-sizing: border-box;
-    overflow-x: hidden;
+html,
+body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: "Numans", sans-serif;
+  text-decoration: none;
+}
+.custom-navbar {
+  box-shadow: 10px 10px 10px #eee;
+  z-index: ;
+  background-color: #fff;
+}
+.nav-link {
+  color: black !important;
+  margin-right: 3rem;
+}
+.custom-toggler.navbar-toggler {
+  border-color: rgb(247, 32, 78);
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(247,32,78, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.custom-toggler .navbar-toggler-icon {
+  width: 18px !important;
+}
+.custom-toggler:hover {
+  border-color: rgb(255, 255, 255);
+  background-color: #f76a88;
+}
+.navbar-toggler-icon:hover {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+#logo_custom {
+  margin-top: -6px;
+}
+@media only screen and (max-width: 760px) {
+  #logo_custom {
+    width: 40%;
+  }
 }
 
-:root{
-
-    --Abel: 'Abel', cursive;
-    --Anton: 'Anton', cursive;
-    --Josefin : 'Josefin', cursive;
-    --Lexend: 'Lexend', cursive;
-    --Livvic : 'Livvic', cursive;
+.nav-brand {
+  font-size: 6.5rem;
+  padding: 1rem 0;
+  display: block;
+  font-family: var(--Abel);
 }
 
-
-/*------------Global Classes------------*/
-
-a{
-    text-decoration: none;
+.nav > li > a:hover,
+.nav > li > a:focus,
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background: #fff;
 }
-
-.flex-row{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.dropdown {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 300px;
 }
-
-ul{
-    list-style-type: none;
+.dropdown-menu > li > a {
+  color: #428bca;
 }
-
-/*------x-----Global Classes-------x----*/
-
-
-
-/*------------navbar------------*/
-
-.nav{
-    background: white;
-    padding: 0 2rem;
-    height: 0rem;
-    min-height: 40vh;
-    overflow: hidden;
+.dropdown ul.dropdown-menu {
+  border-radius: 4px;
+  box-shadow: none;
+  margin-top: 20px;
+  width: 300px;
 }
-
-.nav .nav-menu{
-    justify-content: space-between;
-
+.dropdown ul.dropdown-menu:before {
+  content: "";
+  border-bottom: 10px solid #fff;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  position: absolute;
+  top: -10px;
+  right: 16px;
+  z-index: 10;
 }
-
-.nav .nav-items{
-    display: flex;
-    margin: 0;
+.dropdown ul.dropdown-menu:after {
+  content: "";
+  border-bottom: 12px solid #ccc;
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+  position: absolute;
+  top: -12px;
+  right: 14px;
 }
-
-.nav .nav-items .nav-link{
-    padding: 1.6rem 1rem;
-    font-size: 1.1rem;
-    position: relative;
+.title-container {
+  font-size: 3rem;
+  padding: 10rem 5rem;
+  margin-left: 15rem;s
 }
-
-.nav .nav-brand a{
-    font-size: 1.6rem;
-    padding: 1rem 0;
-    display: block;
-    font-family: var(--Abel);
+.container {
+  text-decoration: none;
 }
-
-.nav .social{
-    padding: 1.4rem 0;
+.user-name {
+  padding: 0 4rem;
 }
-
-/*------x-----navbar-------x----*/
+.fa-user-circle {
+  padding-left: 2rem;
+}
