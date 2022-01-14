@@ -51,7 +51,7 @@ def signupdesc():
             login_record.insert_one({'username':signup_username,'password':signup_password})
             global_cred_var.save(signup_username)
             return render_template("signupdesc.html")
-    return render_template_string(ret_msg)
+    return render_template("signup.html",value=ret_msg,un=signup_username,pd=signup_password)
 
 @app.route('/signing',methods=['GET','POST'])
 def signing():
@@ -61,12 +61,15 @@ def signing():
         desc_email=request.form.get('email')
         desc_phone_no=request.form.get('phone_no')
         desc_organization=request.form.get('organization')
+        desc_preferred_topic=request.form.get('preferred_topic')
         desc_github=request.form.get('github')
         desc_linkedin=request.form.get('linkedin')
         desc_dob_month=request.form.get('month')
         desc_dob_day=request.form.get('day')
         desc_dob_year=request.form.get('year')
         desc_gender=request.form.get('gender')
+        print(desc_preferred_topic)
+        print(type(desc_preferred_topic))
         
         if len(str(desc_phone_no)) not in [10,12]:
             ret_msg="Invalid Phone no"
@@ -108,7 +111,7 @@ def home():
             else:
                 login_msg="Password is incorrect"
 
-    return render_template_string(login_msg)
+    return render_template('login.html',value=login_msg)
 
 @app.route('/password_reset',methods=['GET','POST'])
 def reset():

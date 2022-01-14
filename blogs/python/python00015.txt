@@ -1,0 +1,2 @@
+Welcome to blog no python00015.
+In this folder you will learn synatx in Python.

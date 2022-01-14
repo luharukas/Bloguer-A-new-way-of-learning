@@ -60,6 +60,7 @@
                     name="signup_username"
                     class="form-control"
                     placeholder="username"
+                    value="{{un}}"
                     required
                   />
                 </div>
@@ -75,6 +76,7 @@
                     name="signup_password"
                     class="form-control"
                     placeholder="password"
+                    value="{{value}}"
                     required
                   />
                 </div>
@@ -90,8 +92,14 @@
                     name="signup_re_enter_password"
                     class="form-control"
                     placeholder="re-enter password"
+                  
                     required
                   />
+                </div>
+                <div>
+                  <label style="color: red;">
+                    {{value}}
+                  </label>
                 </div>
                 <span id="message" style="color: red" class="message">
                   <h6></h6>

@@ -1,0 +1,2 @@
+Welcome to blog no c00005.
+In this folder you will learn to print in c language.

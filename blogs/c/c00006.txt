@@ -1,0 +1,2 @@
+Welcome to blog no c00006.
+In this folder you will learn how to open file using C.
