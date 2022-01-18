@@ -1,0 +1,57 @@
+html,
+body {
+  background-color: #f8f5f1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: "Numans", sans-serif;
+}
+.custom-navbar {
+  box-shadow: 10px 10px 10px #eee;
+  background-color: #fff;
+}
+.nav-link {
+  color: black !important;
+  margin-right: 3rem;
+}
+
+
+.navbar-toggler-icon:hover {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+#logo_custom {
+  margin-top: -6px;
+}
+@media only screen and (max-width: 760px) {
+  #logo_custom {
+    width: 40%;
+  }
+}
+
+.nav-brand {
+  font-size: 3.5rem;
+  padding: 2rem 4rem;
+  display: block;
+  font-family: var(--Abel);
+}
+
+.welcome{
+   text-align: center;
+}
+.btn-create{
+    float: right;
+    width: 200px;
+    text-align: center;
+    height: 60px;
+    padding-right: 80px;
+    margin-top: 40px;
+    margin-right: 70px;
+}
+.container{
+  margin-top: 60px;
+}
+.col-form-label{
+  font-size: 2.5rem;
+  font-weight: normal;
+  
+}
