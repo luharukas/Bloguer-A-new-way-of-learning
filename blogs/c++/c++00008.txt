@@ -1,0 +1,2 @@
+Welcome to blog no c++00008.
+In this folder you will learn how to manage develop OOps in C++.

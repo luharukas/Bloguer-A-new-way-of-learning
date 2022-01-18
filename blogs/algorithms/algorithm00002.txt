@@ -1,0 +1,2 @@
+Welcome to blog no algo00002.
+In this folder you will learn how to manage insertion sort.

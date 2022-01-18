@@ -1,0 +1,2 @@
+Welcome to blog no algo00001.
+In this folder you will learn how to manage binary search.
