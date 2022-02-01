@@ -30,7 +30,10 @@
     <h2 class="welcome">Welcome
         <span class="username">userame</span>
     </h2>
-    <button type="button" class="btn btn-create" onclick="href.location=/templates/create.html">Write Blogs</button>
+    <form action='/create'>
+      <input type='submit' class="btn btn-create" value="Write Blogs" >
+    </form>
+    <!-- <button type="button" class="btn btn-create" onclick="location.href=/templates/create.html">Write Blogs</button> -->
     <br><br><br>
     <div class="container">
     <div class="col-md-9">
@@ -43,31 +46,31 @@
                       <tbody>
                           <tr>
                               <td><label for="name" class="col-4 col-form-label">First Name :</label> </td>
-                              <td> <label for="name-disp disp-txt" class="col-4 col-form-label">first_name</label> </td>
+                              <td> <label for="name-disp disp-txt" class="col-4 col-form-label">{{fn}}</label> </td>
                           </tr>
                           <tr>
                               <td><label for="lastname" class="col-4 col-form-label">Last Name :</label> </td>
-                              <td> <label for="lastname-disp disp-txt" class="col-4 col-form-label">last_Name</label> </td>
+                              <td> <label for="lastname-disp disp-txt" class="col-4 col-form-label">{{ln}}</label> </td>
                           </tr>
                           <tr>
                               <td><label for="dob" class="col-4 col-form-label">DOB :</label> </td>
-                              <td> <label for="dob-disp disp-txt" class="col-4 col-form-label">dd/mm/yyyy</label> </td>
+                              <td> <label for="dob-disp disp-txt" class="col-4 col-form-label">{{dob}}</label> </td>
                           </tr>
                           <tr>
                               <td> <label for="email" class="col-4 col-form-label">Email :</label> </td>
-                              <td><label for="email-disp disp-txt" class="col-4 col-form-label">Email</label> </td>
+                              <td><label for="email-disp disp-txt" class="col-4 col-form-label">{{email}}</label> </td>
                           </tr>
                           <tr>
                               <td><label for="linkedIn" class="col-4 col-form-label">LinkedIN :</label>  </td>
-                              <td> <label for="linkedIn-disp disp-txt" class="col-4 col-form-label">LinkedIN account link</label></td>
+                              <td> <label for="linkedIn-disp disp-txt" class="col-4 col-form-label">{{linkedin}}</label></td>
                           </tr>
                           <tr>
                               <td> <label for="github" class="col-4 col-form-label">Github :</label> </td>
-                              <td> <label for="github-disp disp-txt" class="col-4 col-form-label">Github profile link</label></td>
+                              <td> <label for="github-disp disp-txt" class="col-4 col-form-label">{{github}}</label></td>
                           </tr>
                           <tr>
                               <td> <label for="blogs" class="col-4 col-form-label">Blogs Published</label></td>
-                              <td><label for="blogs-disp disp-txt" class="col-4 col-form-label">Blogs Published</label>  </td>
+                              <td><label for="blogs-disp disp-txt" class="col-4 col-form-label">10</label>  </td>
                           </tr>
                       </tbody>
                   </table>

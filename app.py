@@ -1,10 +1,12 @@
 # Import important modules
-from datetime import date
-from flask import Flask,render_template,request
-import os
+from flask import *
 from flask.templating import render_template_string
 from pymongo import MongoClient
-import re
+import random
+from function import send_sms
+
+
+
 app=Flask(__name__)
 
 ###################Database connection ######################
@@ -12,6 +14,9 @@ client=MongoClient("mongodb+srv://luharukas:Qwerasdf@authentication.k68mm.mongod
 db=client.get_database('Bloguer')
 login_record=db.Login
 user_record=db.User
+otp_record=db.Otp
+preferences=db.Interested_topic
+blogs=db.blogs
 
 #################################################################
 
@@ -23,24 +28,69 @@ class global_cred:
         self.head_username=username
     
 global_cred_var=global_cred()
+
+
         
 @app.route('/')
+@app.route('/login')
 def login():
-    return render_template("login.html")
+    return render_template("login.html",username=global_cred_var.head_username)
 
-@app.route('/login',methods=['GET','POST'])
-def login2():
-    return render_template('login.html')
 
-@app.route('/signup',methods=['GET','POST'])
-def signup():
-    return render_template('signup.html')
+@app.route('/validation', methods=['GET','POST'])
+def validation():
+    if request.method=='POST':
+        login_username=request.form.get('login_username')
+        login_password=request.form.get('login_password')
+
+        global_cred_var.save(login_username)
+
+        login_username=login_username.lower()
+        details=login_record.find_one({'username':login_username})
+        if details==None:
+            login_msg="Username not found"
+        else:
+            if login_password==details['password']:
+                return redirect('/home')
+            else:
+                login_msg="Password is incorrect"
+
+    return render_template('login.html',value=login_msg,username=global_cred_var.head_username)
+
+@app.route('/home')
+def home():
+    if global_cred_var.head_username:
+        pref_list=list(preferences.find({'username':global_cred_var.head_username.lower()}))
+        print(pref_list)
+        pref_list=[x['preference'] for x in pref_list]
+        print(pref_list)
+        arr=[]
+        for x in blogs.find():
+            if x['types'] in set(pref_list):
+                arr.append(x)
+        print(arr)
+        
+        return render_template('home.html',username=global_cred_var.head_username.upper(), data=arr)
+    else:
+        return redirect('/login')
+
+
+@app.route('/reset_password')
+def reset_password():
+    pass
+            
+
+@app.route('/complete_reset',methods=['GET','POST'])
+def complete_reset():
+    pass
+
+
 
 
 @app.route('/signupdesc',methods=['GET','POST'])
 def signupdesc():
     if request.method=="POST":
-        signup_username=request.form.get('signup_username')
+        signup_username=request.form.get('signup_username').lower()
         signup_password=request.form.get('signup_password')
         details=login_record.find_one({'username':signup_username})
         if details!=None:
@@ -61,15 +111,13 @@ def signing():
         desc_email=request.form.get('email')
         desc_phone_no=request.form.get('phone_no')
         desc_organization=request.form.get('organization')
-        desc_preferred_topic=request.form.get('preferred_topic')
+        desc_preferred_topic=request.form.getlist('preferred_topic')
         desc_github=request.form.get('github')
         desc_linkedin=request.form.get('linkedin')
         desc_dob_month=request.form.get('month')
         desc_dob_day=request.form.get('day')
         desc_dob_year=request.form.get('year')
         desc_gender=request.form.get('gender')
-        print(desc_preferred_topic)
-        print(type(desc_preferred_topic))
         
         if len(str(desc_phone_no)) not in [10,12]:
             ret_msg="Invalid Phone no"
@@ -90,34 +138,153 @@ def signing():
                     'gender':desc_gender
             }
             user_record.insert_one(info_dict)
-            return render_template('home.html',value=global_cred_var.head_username)
+            for i in desc_preferred_topic:
+                preferences.insert_one({'username':global_cred_var.head_username,'preference':i})
+
+            return render_template('login.html',username=global_cred_var.head_username)
 
     return render_template_string(ret_msg)
 
+############################### home page option ############################################### 
+@app.route('/dashboard')
+def dashboard():
+    a=list(user_record.find({'username':global_cred_var.head_username.lower()}))[0]
+    return render_template('dashboard.html',fn=a['fname'],ln=a['lname'],email=a['email'],github=a['github'],linkedin=a['linkedin'],dob=a['dob'],)
 
-@app.route('/home',methods=['GET','POST'])
-def home():
-    if request.method=='POST':
-        login_username=request.form.get('login_username')
-        login_password=request.form.get('login_password')
-        login_username=login_username.lower()
-        details=login_record.find_one({'username':login_username})
-        if details==None:
-            login_msg="Username not found"
-        else:
-            if login_password==details['password']:
-                global_cred_var.save(login_username)
-                return render_template('home.html')
-            else:
-                login_msg="Password is incorrect"
+@app.route('/create')
+def create():
+    return render_template('create.html')
 
-    return render_template('login.html',value=login_msg)
+@app.route('/logout')
+def logout():
+    global_cred_var.head_username=None
+    return redirect('/login')
 
-@app.route('/password_reset',methods=['GET','POST'])
-def reset():
-    return render_template_string("Page under Development")
+############################### home page option done ###############################################
 
 ###################### Routing Pages End ########################### 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #################### Main Function ###################################

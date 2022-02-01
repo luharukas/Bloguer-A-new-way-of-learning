@@ -1,633 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blogure</title>
 
-    <!---------------------------Font File---------------------------->
-    <link rel="stylesheet" href= "/static/css/all.css">
-    <!--{{ url_for('static',filename='css/all.css') }}-->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blogure</title>
 
-    <!-------------------------CSS File-------------------------------->
-    <link rel="stylesheet" href= "/static/css/Styles.css">
-    <!--{{ url_for('static',filename='css/Styles.css') }}-->
+  <!---------------------------Font File---------------------------->
+  <link rel="stylesheet" href="/static/css/all.css">
+  <!--{{ url_for('static',filename='css/all.css') }}-->
 
-    <link
-      href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      rel="stylesheet"
-      id="bootstrap-css"
-    />
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  </head>
-  <body>
-    <nav class="navbar fixed-top navbar-expand-md custom-navbar navbar-dark">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="nav-brand">Blogure</div>
-      <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav ml-auto nav navbar-nav" style="float: right;">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
-              ><b><i class="fas fa-user-circle fa-2x"></i><span class="user-name">Hi, {{value}}</span></b
-            ></a>
-            <ul class="dropdown-menu">
-              <li><a href="">Dashboard</a></li>
-              <li class="divider"></li>
-              <li><a href="">Create</a></li>
-              <li class="divider"></li>
-              <li><a href="">Signout</a></li>
-            </ul>
-          </li>
-        </ul>
+  <!-------------------------CSS File-------------------------------->
+  <link rel="stylesheet" href="/static/css/Styles.css">
+  <!--{{ url_for('static',filename='css/Styles.css') }}-->
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar fixed-top navbar-expand-md custom-navbar navbar-dark">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="nav-brand">Blogure</div>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto nav navbar-nav" style="float: right;">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><b><i
+                class="fas fa-user-circle fa-2x"></i><span class="user-name">Hi,{{username}}</span></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li class="divider"></li>
+            <li><a href="/create">Create</a></li>
+            <li class="divider"></li>
+            <li><a href="/login">Signout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" />
+  <span class="title-container title-container-1">Blogs of your Interest</span>
+  <div class="container">
+
+    <br>
+    {% for x in data %}
+    <div class="well">
+      <div class="media">
+        <a class="pull-left" href="#">
+
+        </a>
+        <div class="media-body">
+          <h3 class="media-heading-1"><a href="#" class="tit-1-subtit-1">{{x['title']}}</a></h3>
+          <p class="auth-tit-1-subtit-1">Author: {{x['by']}}</p>
+          <p class="text-tit-1-subtit-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius
+            quam sit amet vulputate.
+            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
+            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
+            Aliquam in felis sit amet augue.</p>
+          <ul class="list-inline list-unstyled">
+            <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-1-subtit-1"> Published on: {{x['date']}}</span></span></li>
+
+            <li>|</li>
+            <li>
+              <span><i class="far fa-thumbs-up"></i></span>
+              <span class="like-tit-1-subtit-1">{{x['like']}}</span>
+              <span> </span>
+              <span><i class="far fa-thumbs-down"></i></span>
+              <span class="dislike-tit-1-subtit-1">{{x['dislikes']}}</span>
+            </li>
+          </ul>
+        </div>
       </div>
-    </nav>
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
-     <span class="title-container title-container-1">Title 1</span>
-    <div class="container">
-     
-      <br>
-  <div class="well">
+    </div>
+
+    {% endfor %}
+
+    <!-- <div class="well">
       <div class="media">
-      	<a class="pull-left" href="#">
-    		
-  		</a>
-  		<div class="media-body">
-    		<h3 class="media-heading-1"><a href="#" class="tit-1-subtit-1">Receta 1</a></h3>
-          <p class="auth-tit-1-subtit-1">By Francisco</p>
-          <p class="text-tit-1-subtit-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
+        <a class="pull-left" href="#">
+
+        </a>
+        <div class="media-body">
+          <h3 class="media-heading-2"><a href="#" class="tit-1-subtit-2">Receta 2</a></h3>
+          <p class="auth-tit-1-subtit-2">By Francisco</p>
+          <p class="text-tit-1-subtit-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius
+            quam sit amet vulputate.
+            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
+            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
+            Aliquam in felis sit amet augue.</p>
           <ul class="list-inline list-unstyled">
-  			<li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-1-subtit-1"> 2 days, 8 hours </span></span></li>
-        
+            <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-1-subtit-2"> 2 days, 8 hours
+                </span></span></li>
+
             <li>|</li>
+            <li> -->
+            <!-- <li>|</li>
             <li>
-            <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
               <span><i class="far fa-thumbs-up"></i></span>
-              <span class="like-tit-1-subtit-1">100</span>
-              <span>  </span>
+              <span class="like-tit-3-subtit-3">100</span>
+              <span> </span>
               <span><i class="far fa-thumbs-down"></i></span>
-              <span class="dislike-tit-1-subtit-1">100</span>
+              <span class="dislike-tit-3-subtit-3">100</span>
             </li>
-			</ul>
-       </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="well">
+      <div class="media">
+        <a class="pull-left" href="#">
+
+        </a>
+        <div class="media-body">
+          <h3 class="media-heading-1"><a href="#" class="tit-3-subtit-4">Receta 1</a></h3>
+          <p class="auth-tit-3-subtit-4">By Francisco</p>
+          <p class="text-tit-3-subtit-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius
+            quam sit amet vulputate.
+            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
+            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
+            Aliquam in felis sit amet augue.</p>
+          <ul class="list-inline list-unstyled">
+            <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-3-subtit-4"> 2 days, 8 hours
+                </span></span></li>
+
+            <li>|</li>
+            <li> -->
+              <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+              <!-- <span><i class="far fa-thumbs-up"></i></span>
+              <span class="like-tit-3-subtit-4">100</span>
+              <span> </span>
+              <span><i class="far fa-thumbs-down"></i></span>
+              <span class="dislike-tit-3-subtit-4">100</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="well">
+      <div class="media">
+        <a class="pull-left" href="#">
+
+        </a>
+        <div class="media-body">
+          <h3 class="media-heading-1"><a href="#" class="tit-3-subtit-5">Receta 1</a></h3>
+          <p class="auth-tit-3-subtit-5">By Francisco</p>
+          <p class="text-tit-3-subtit-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius
+            quam sit amet vulputate.
+            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
+            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
+            Aliquam in felis sit amet augue.</p>
+          <ul class="list-inline list-unstyled">
+            <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-3-subtit-5"> 2 days, 8 hours
+                </span></span></li>
+
+            <li>|</li>
+            <li> -->
+              <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+              <!-- <span><i class="far fa-thumbs-up"></i></span>
+              <span class="like-tit-3-subtit-5">100</span>
+              <span> </span>
+              <span><i class="far fa-thumbs-down"></i></span>
+              <span class="dislike-tit-3-subtit-5">100</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="well">
-    <div class="media">
-      <a class="pull-left" href="#">
-      
-    </a>
-    <div class="media-body">
-      <h3 class="media-heading-2"><a href="#" class="tit-1-subtit-2">Receta 2</a></h3>
-        <p class="auth-tit-1-subtit-2">By Francisco</p>
-        <p class="text-tit-1-subtit-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-        <ul class="list-inline list-unstyled">
-      <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-1-subtit-2"> 2 days, 8 hours </span></span></li>
-      
-          <li>|</li>
-          <li>
-          <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-            <span><i class="far fa-thumbs-up"></i></span>
-            <span class="like-tit-1-subtit-2">100</span>
-            <span>  </span>
-            <span><i class="far fa-thumbs-down"></i></span>
-            <span class="dislike-tit-1-subtit-2">100</span>
-          </li>
-    </ul>
-     </div>
-  </div>
-</div>
-<div class="well">
-  <div class="media">
-    <a class="pull-left" href="#">
-    
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading-1"><a href="#" class="tit-1-subtit-3">Receta 3</a></h3>
-      <p class="auth-tit-1-subtit-3">By Francisco</p>
-      <p class="text-tit-1-subtit-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-      <ul class="list-inline list-unstyled">
-    <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-1-subtit-3"> 2 days, 8 hours </span></span></li>
-    
-        <li>|</li>
-        <li>
-        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-          <span><i class="far fa-thumbs-up"></i></span>
-          <span class="like-tit-1-subtit-3">100</span>
-          <span>  </span>
-          <span><i class="far fa-thumbs-down"></i></span>
-          <span class="dislike-tit-1-subtit-3">100</span>
-        </li>
-  </ul>
-   </div>
-</div>
-</div>
-<div class="well">
-  <div class="media">
-    <a class="pull-left" href="#">
-    
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading-1"><a href="#" class="tit-1-subtit-4">Receta 1</a></h3>
-      <p class="auth-tit-1-subtit-4">By Francisco</p>
-      <p class="text-tit-1-subtit-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-      <ul class="list-inline list-unstyled">
-    <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-1-subtit-4"> 2 days, 8 hours </span></span></li>
-    
-        <li>|</li>
-        <li>
-        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-          <span><i class="far fa-thumbs-up"></i></span>
-          <span class="like-v">100</span>
-          <span>  </span>
-          <span><i class="far fa-thumbs-down"></i></span>
-          <span class="dislike-tit-1-subtit-4">100</span>
-        </li>
-  </ul>
-   </div>
-</div>
-</div>
-<div class="well">
-  <div class="media">
-    <a class="pull-left" href="#">
-    
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading-1"><a href="#" class="tit-1-subtit-5">Receta 1</a></h3>
-      <p class="auth-tit-1-subtit-5">By Francisco</p>
-      <p class="text-tit-1-subtit-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-      <ul class="list-inline list-unstyled">
-    <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-1-subtit-5"> 2 days, 8 hours </span></span></li>
-    
-        <li>|</li>
-        <li>
-        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-          <span><i class="far fa-thumbs-up"></i></span>
-          <span class="like-tit-1-subtit-5">100</span>
-          <span>  </span>
-          <span><i class="far fa-thumbs-down"></i></span>
-          <span class="dislike-tit-1-subtit-5">100</span>
-        </li>
-  </ul>
-   </div>
-</div>
-</div>
-</div>
-<span class="title-container title-container-2">Title 2</span>
-    <div class="container">
-     
-      <br>
-  <div class="well">
+  <span class="title-container title-container-4">Title 4</span>
+  <div class="container">
+
+    <br>
+    <div class="well">
       <div class="media">
-      	<a class="pull-left" href="#">
-    		
-  		</a>
-  		<div class="media-body">
-    		<h3 class="media-heading-1"><a href="#" class="tit-2-subtit-1">Receta 1</a></h3>
-          <p class="auth-tit-2-subtit-1">By Francisco</p>
-          <p class="text-tit-2-subtit-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-          <ul class="list-inline list-unstyled">
-  			<li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-2-subtit-1"> 2 days, 8 hours </span></span></li>
-        
-            <li>|</li>
-            <li>
-            <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-              <span><i class="far fa-thumbs-up"></i></span>
-              <span class="like-tit-2-subtit-1">100</span>
-              <span>  </span>
-              <span><i class="far fa-thumbs-down"></i></span>
-              <span class="dislike-tit-2-subtit-1">100</span>
-            </li>
-			</ul>
-       </div>
-    </div>
-  </div>
-  <div class="well">
-    <div class="media">
-      <a class="pull-left" href="#">
-      
-    </a>
-    <div class="media-body">
-      <h3 class="media-heading-2"><a href="#" class="tit-2-subtit-2">Receta 2</a></h3>
-        <p class="auth-tit-2-subtit-2">By Francisco</p>
-        <p class="text-tit-2-subtit-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-        <ul class="list-inline list-unstyled">
-      <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-2-subtit-2"> 2 days, 8 hours </span></span></li>
-      
-          <li>|</li>
-          <li>
-          <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-            <span><i class="far fa-thumbs-up"></i></span>
-            <span class="like-tit-2-subtit-2">100</span>
-            <span>  </span>
-            <span><i class="far fa-thumbs-down"></i></span>
-            <span class="dislike-tit-2-subtit-2">100</span>
-          </li>
-    </ul>
-     </div>
-  </div>
-</div>
-<div class="well">
-  <div class="media">
-    <a class="pull-left" href="#">
-    
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading-1"><a href="#" class="tit-2-subtit-3">Receta 3</a></h3>
-      <p class="auth-tit-2-subtit-3">By Francisco</p>
-      <p class="text-tit-2-subtit-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-      <ul class="list-inline list-unstyled">
-    <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-2-subtit-3"> 2 days, 8 hours </span></span></li>
-    
-        <li>|</li>
-        <li>
-        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-          <span><i class="far fa-thumbs-up"></i></span>
-          <span class="like-tit-2-subtit-3">100</span>
-          <span>  </span>
-          <span><i class="far fa-thumbs-down"></i></span>
-          <span class="dislike-tit-2-subtit-3">100</span>
-        </li>
-  </ul>
-   </div>
-</div>
-</div>
-<div class="well">
-  <div class="media">
-    <a class="pull-left" href="#">
-    
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading-1"><a href="#" class="tit-2-subtit-4">Receta 1</a></h3>
-      <p class="auth-tit-2-subtit-4">By Francisco</p>
-      <p class="text-tit-2-subtit-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-      <ul class="list-inline list-unstyled">
-    <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-2-subtit-4"> 2 days, 8 hours </span></span></li>
-    
-        <li>|</li>
-        <li>
-        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-          <span><i class="far fa-thumbs-up"></i></span>
-          <span class="like-tit-2-subtit-4">100</span>
-          <span>  </span>
-          <span><i class="far fa-thumbs-down"></i></span>
-          <span class="dislike-tit-2-subtit-4">100</span>
-        </li>
-  </ul>
-   </div>
-</div>
-</div>
-<div class="well">
-  <div class="media">
-    <a class="pull-left" href="#">
-    
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading-1"><a href="#" class="tit-2-subtit-5">Receta 1</a></h3>
-      <p class="auth-tit-2-subtit-5">By Francisco</p>
-      <p class="text-tit-2-subtit-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-      <ul class="list-inline list-unstyled">
-    <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-2-subtit-5"> 2 days, 8 hours </span></span></li>
-    
-        <li>|</li>
-        <li>
-        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-          <span><i class="far fa-thumbs-up"></i></span>
-          <span class="like-tit-2-subtit-5">100</span>
-          <span>  </span>
-          <span><i class="far fa-thumbs-down"></i></span>
-          <span class="dislike-tit-2-subtit-5">100</span>
-        </li>
-  </ul>
-   </div>
-</div>
-</div>
-</div>
-<span class="title-container title-container-3">Title 3</span>
-    <div class="container">
-     
-      <br>
-  <div class="well">
-      <div class="media">
-      	<a class="pull-left" href="#">
-    		
-  		</a>
-  		<div class="media-body">
-    		<h3 class="media-heading-1"><a href="#" class="tit-3-subtit-1">Receta 1</a></h3>
-          <p class="auth-tit-3-subtit-1">By Francisco</p>
-          <p class="text-tit-3-subtit-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-          <ul class="list-inline list-unstyled">
-  			<li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-3-subtit-1"> 2 days, 8 hours </span></span></li>
-        
-            <li>|</li>
-            <li>
-            <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-              <span><i class="far fa-thumbs-up"></i></span>
-              <span class="like-tit-3-subtit-1">100</span>
-              <span>  </span>
-              <span><i class="far fa-thumbs-down"></i></span>
-              <span class="dislike-tit-3-subtit-1">100</span>
-            </li>
-			</ul>
-       </div>
-    </div>
-  </div>
-  <div class="well">
-    <div class="media">
-      <a class="pull-left" href="#">
-      
-    </a>
-    <div class="media-body">
-      <h3 class="media-heading-2"><a href="#" class="tit-3-subtit-2">Receta 2</a></h3>
-        <p class="auth-tit-3-subtit-2">By Francisco</p>
-        <p class="text-tit-3-subtit-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-        <ul class="list-inline list-unstyled">
-      <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-3-subtit-2"> 2 days, 8 hours </span></span></li>
-      
-          <li>|</li>
-          <li>
-          <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-            <span><i class="far fa-thumbs-up"></i></span>
-            <span class="like-tit-3-subtit-2">100</span>
-            <span>  </span>
-            <span><i class="far fa-thumbs-down"></i></span>
-            <span class="dislike-tit-3-subtit-2">100</span>
-          </li>
-    </ul>
-     </div>
-  </div>
-</div>
-<div class="well">
-  <div class="media">
-    <a class="pull-left" href="#">
-    
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading-1"><a href="#" class="tit-3-subtit-3">Receta 3</a></h3>
-      <p class="auth-tit-3-subtit-3">By Francisco</p>
-      <p class="text-tit-3-subtit-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-      <ul class="list-inline list-unstyled">
-    <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-3-subtit-3"> 2 days, 8 hours </span></span></li>
-    
-        <li>|</li>
-        <li>
-        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-          <span><i class="far fa-thumbs-up"></i></span>
-          <span class="like-tit-3-subtit-3">100</span>
-          <span>  </span>
-          <span><i class="far fa-thumbs-down"></i></span>
-          <span class="dislike-tit-3-subtit-3">100</span>
-        </li>
-  </ul>
-   </div>
-</div>
-</div>
-<div class="well">
-  <div class="media">
-    <a class="pull-left" href="#">
-    
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading-1"><a href="#" class="tit-3-subtit-4">Receta 1</a></h3>
-      <p class="auth-tit-3-subtit-4">By Francisco</p>
-      <p class="text-tit-3-subtit-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-      <ul class="list-inline list-unstyled">
-    <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-3-subtit-4"> 2 days, 8 hours </span></span></li>
-    
-        <li>|</li>
-        <li>
-        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-          <span><i class="far fa-thumbs-up"></i></span>
-          <span class="like-tit-3-subtit-4">100</span>
-          <span>  </span>
-          <span><i class="far fa-thumbs-down"></i></span>
-          <span class="dislike-tit-3-subtit-4">100</span>
-        </li>
-  </ul>
-   </div>
-</div>
-</div>
-<div class="well">
-  <div class="media">
-    <a class="pull-left" href="#">
-    
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading-1"><a href="#" class="tit-3-subtit-5">Receta 1</a></h3>
-      <p class="auth-tit-3-subtit-5">By Francisco</p>
-      <p class="text-tit-3-subtit-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-      <ul class="list-inline list-unstyled">
-    <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-3-subtit-5"> 2 days, 8 hours </span></span></li>
-    
-        <li>|</li>
-        <li>
-        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-          <span><i class="far fa-thumbs-up"></i></span>
-          <span class="like-tit-3-subtit-5">100</span>
-          <span>  </span>
-          <span><i class="far fa-thumbs-down"></i></span>
-          <span class="dislike-tit-3-subtit-5">100</span>
-        </li>
-  </ul>
-   </div>
-</div>
-</div>
-</div>
-<span class="title-container title-container-4">Title 4</span>
-    <div class="container">
-     
-      <br>
-  <div class="well">
-      <div class="media">
-      	<a class="pull-left" href="#">
-    		
-  		</a>
-  		<div class="media-body">
-    		<h3 class="media-heading-1"><a href="#" class="tit-4-subtit-1">Receta 1</a></h3>
+        <a class="pull-left" href="#">
+
+        </a>
+        <div class="media-body">
+          <h3 class="media-heading-1"><a href="#" class="tit-4-subtit-1">Receta 1</a></h3>
           <p class="auth-tit-4-subtit-1">By Francisco</p>
-          <p class="text-tit-4-subtit-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
+          <p class="text-tit-4-subtit-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius
+            quam sit amet vulputate.
+            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
+            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
+            Aliquam in felis sit amet augue.</p>
           <ul class="list-inline list-unstyled">
-  			<li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-4-subtit-1"> 2 days, 8 hours </span></span></li>
-        
+            <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-4-subtit-1"> 2 days, 8 hours
+                </span></span></li>
+
             <li>|</li>
-            <li>
-            <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-              <span><i class="far fa-thumbs-up"></i></span>
+            <li> -->
+              <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+              <!-- <span><i class="far fa-thumbs-up"></i></span>
               <span class="like-tit-4-subtit-1">100</span>
-              <span>  </span>
+              <span> </span>
               <span><i class="far fa-thumbs-down"></i></span>
               <span class="dislike-tit-4-subtit-1">100</span>
             </li>
-			</ul>
-       </div>
+          </ul>
+        </div>
+      </div>
     </div>
+    <div class="well">
+      <div class="media">
+        <a class="pull-left" href="#">
+
+        </a>
+        <div class="media-body">
+          <h3 class="media-heading-2"><a href="#" class="tit-4-subtit-2">Receta 2</a></h3>
+          <p class="auth-tit-4-subtit-2">By Francisco</p>
+          <p class="text-tit-4-subtit-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius
+            quam sit amet vulputate.
+            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
+            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
+            Aliquam in felis sit amet augue.</p>
+          <ul class="list-inline list-unstyled">
+            <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-4-subtit-2"> 2 days, 8 hours
+                </span></span></li>
+
+            <li>|</li>
+            <li> -->
+              <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+              <!-- <span><i class="far fa-thumbs-up"></i></span>
+              <span class="like-tit-4-subtit-2">100</span>
+              <span> </span>
+              <span><i class="far fa-thumbs-down"></i></span>
+              <span class="dislike-tit-4-subtit-2">100</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="well">
+      <div class="media">
+        <a class="pull-left" href="#">
+
+        </a>
+        <div class="media-body">
+          <h3 class="media-heading-1"><a href="#" class="tit-4-subtit-3">Receta 3</a></h3>
+          <p class="auth-tit-4-subtit-3">By Francisco</p>
+          <p class="text-tit-4-subtit-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius
+            quam sit amet vulputate.
+            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
+            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
+            Aliquam in felis sit amet augue.</p>
+          <ul class="list-inline list-unstyled">
+            <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-4-subtit-3"> 2 days, 8 hours
+                </span></span></li>
+
+            <li>|</li> -->
+             <!-- <li> 
+              <span><i class="far fa-thumbs-up"></i></span>
+              <span class="like-tit-4-subtit-3">100</span>
+              <span> </span>
+              <span><i class="far fa-thumbs-down"></i></span>
+              <span class="dislike-tit-4-subtit-3">100</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="well">
+      <div class="media">
+        <a class="pull-left" href="#">
+
+        </a>
+        <div class="media-body">
+          <h3 class="media-heading-1"><a href="#" class="tit-4-subtit-4">Receta 1</a></h3>
+          <p class="auth-tit-4-subtit-4">By Francisco</p>
+          <p class="text-tit-4-subtit-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius
+            quam sit amet vulputate.
+            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
+            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
+            Aliquam in felis sit amet augue.</p>
+          <ul class="list-inline list-unstyled">
+            <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-4-subtit-4"> 2 days, 8 hours
+                </span></span></li>
+
+            <li>|</li>
+            <li>
+              <span><i class="far fa-thumbs-up"></i></span>
+              <span class="like-tit-4-subtit-4">100</span>
+              <span> </span>
+              <span><i class="far fa-thumbs-down"></i></span>
+              <span class="dislike-tit-4-subtit-4">100</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="well">
+      <div class="media">
+        <a class="pull-left" href="#">
+
+        </a>
+        <div class="media-body">
+          <h3 class="media-heading-1"><a href="#" class="tit-4-subtit-5">Receta 1</a></h3>
+          <p class="auth-tit-4-subtit-5">By Francisco</p>
+          <p class="text-tit-4-subtit-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius
+            quam sit amet vulputate.
+            Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
+            dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
+            Aliquam in felis sit amet augue.</p>
+          <ul class="list-inline list-unstyled">
+            <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-4-subtit-5"> 2 days, 8 hours
+                </span></span></li>
+
+            <li>|</li>
+            <li>
+              <span><i class="far fa-thumbs-up"></i></span>
+              <span class="like-tit-4-subtit-5">100</span>
+              <span> </span>
+              <span><i class="far fa-thumbs-down"></i></span>
+              <span class="dislike-tit-4-subtit-5">100</span>
+            </li>
+          </ul>
+        </div>
+      </div> 
+    </div> -->
   </div>
-  <div class="well">
-    <div class="media">
-      <a class="pull-left" href="#">
-      
-    </a>
-    <div class="media-body">
-      <h3 class="media-heading-2"><a href="#" class="tit-4-subtit-2">Receta 2</a></h3>
-        <p class="auth-tit-4-subtit-2">By Francisco</p>
-        <p class="text-tit-4-subtit-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-        <ul class="list-inline list-unstyled">
-      <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-4-subtit-2"> 2 days, 8 hours </span></span></li>
-      
-          <li>|</li>
-          <li>
-          <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-            <span><i class="far fa-thumbs-up"></i></span>
-            <span class="like-tit-4-subtit-2">100</span>
-            <span>  </span>
-            <span><i class="far fa-thumbs-down"></i></span>
-            <span class="dislike-tit-4-subtit-2">100</span>
-          </li>
-    </ul>
-     </div>
-  </div>
-</div>
-<div class="well">
-  <div class="media">
-    <a class="pull-left" href="#">
-    
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading-1"><a href="#" class="tit-4-subtit-3">Receta 3</a></h3>
-      <p class="auth-tit-4-subtit-3">By Francisco</p>
-      <p class="text-tit-4-subtit-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-      <ul class="list-inline list-unstyled">
-    <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-4-subtit-3"> 2 days, 8 hours </span></span></li>
-    
-        <li>|</li>
-        <li>
-        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-          <span><i class="far fa-thumbs-up"></i></span>
-          <span class="like-tit-4-subtit-3">100</span>
-          <span>  </span>
-          <span><i class="far fa-thumbs-down"></i></span>
-          <span class="dislike-tit-4-subtit-3">100</span>
-        </li>
-  </ul>
-   </div>
-</div>
-</div>
-<div class="well">
-  <div class="media">
-    <a class="pull-left" href="#">
-    
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading-1"><a href="#" class="tit-4-subtit-4">Receta 1</a></h3>
-      <p class="auth-tit-4-subtit-4">By Francisco</p>
-      <p class="text-tit-4-subtit-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-      <ul class="list-inline list-unstyled">
-    <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-4-subtit-4"> 2 days, 8 hours </span></span></li>
-    
-        <li>|</li>
-        <li>
-        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-          <span><i class="far fa-thumbs-up"></i></span>
-          <span class="like-tit-4-subtit-4">100</span>
-          <span>  </span>
-          <span><i class="far fa-thumbs-down"></i></span>
-          <span class="dislike-tit-4-subtit-4">100</span>
-        </li>
-  </ul>
-   </div>
-</div>
-</div>
-<div class="well">
-  <div class="media">
-    <a class="pull-left" href="#">
-    
-  </a>
-  <div class="media-body">
-    <h3 class="media-heading-1"><a href="#" class="tit-4-subtit-5">Receta 1</a></h3>
-      <p class="auth-tit-4-subtit-5">By Francisco</p>
-      <p class="text-tit-4-subtit-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-Aliquam in felis sit amet augue.</p>
-      <ul class="list-inline list-unstyled">
-    <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-4-subtit-5"> 2 days, 8 hours </span></span></li>
-    
-        <li>|</li>
-        <li>
-        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-          <span><i class="far fa-thumbs-up"></i></span>
-          <span class="like-tit-4-subtit-5">100</span>
-          <span>  </span>
-          <span><i class="far fa-thumbs-down"></i></span>
-          <span class="dislike-tit-4-subtit-5">100</span>
-        </li>
-  </ul>
-   </div>
-</div>
-</div>
-</div>
-<script  href= "{{ url_for('static',filename='js/main.js') }}"></script>
-  </body>
+  <script href="{{ url_for('static',filename='js/main.js') }}"></script>
+</body>
+
 </html>
+<!--  -->
