@@ -45,41 +45,25 @@
     </div>
   </nav>
   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" />
-  <span class="title-container title-container-1">Blogs of your Interest</span>
+  <span class="title-container title-container-1">{{title}}</span>
   <div class="container">
-
     <br>
-    {% for x in data %}
-    <div class="well">
-      <div class="media">
-        <a class="pull-left" href="#">
-
-        </a>
-        <div class="media-body">
-          <h3 class="media-heading-1"><a href="/content/{{x['title']}}" class="tit-1-subtit-1">{{x['title']}}</a></h3>
-          <p class="auth-tit-1-subtit-1">Author: {{x['by']}}</p>
-        
-          <ul class="list-inline list-unstyled">
-            <li><span><i class="glyphicon glyphicon-calendar"></i><span class="cal-tit-1-subtit-1"> Published on: {{x['on']}}</span></span></li>
-      
-            <li>|</li>
-            <li>
-              <span><i class="far fa-thumbs-up"></i></span>
-              <span class="like-tit-1-subtit-1">{{x['like']}}</span>
-              <span> </span>
-              <span><i class="far fa-thumbs-down"></i></span>
-              <span class="dislike-tit-1-subtit-1">{{x['dislikes']}}</span>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <p>{{final_cnt}}</p>
+    <div>
+      <button class="btn btn-primary" onclick=like()>Likes</button>
+      <button class="btn btn-primary" onclick=dislike()>Dislike</button>
     </div>
-
-    {% endfor %}
 
   </div>
   <script href="{{ url_for('static',filename='js/main.js') }}"></script>
+  <script>
+    function like(){
+      fetch("/like");
+    }
+    function dislike(){
+      fetch("/dislike");
+    }
+  </script>
 </body>
 
 </html>
-<!--  -->

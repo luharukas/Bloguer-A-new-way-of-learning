@@ -32,6 +32,9 @@
     <link rel="stylesheet" href="/static/css/otp.css">
 </head>
 <body>
+
+
+
     <form onsubmit="return myfun()" action="/complete_reset" method="post">
         <div class="container">
           <div class="d-flex justify-content-center h-100">
@@ -41,6 +44,29 @@
               </div>
   
               <div class="card-body">
+                <div class="input-group form-group">
+                  <form method="post" >
+                  <input
+                    type="text"
+                    name="username"
+                    class="form-control"
+                    placeholder="username"
+                    required
+                  />
+                  <div class="form-group">
+                    <input
+                      type="submit"
+                      value="Send OTP"
+                      class="btn float-right login_btn"
+                    />
+                  </div>
+                </form>
+                </div>
+
+
+
+
+
                 <form method="post">
                   <div class="input-group form-group">
                     <input
@@ -92,7 +118,7 @@
             </div>
           </div>
         </div>
-      </form>
+
       <script src="/static/js/otp.js"></script>
 </body>
 </html>

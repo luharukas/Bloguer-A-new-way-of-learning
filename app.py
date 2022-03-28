@@ -1,10 +1,11 @@
 # Import important modules
+from urllib import response
 from flask import *
 from flask.templating import render_template_string
 from pymongo import MongoClient
 import random
 from function import send_sms
-
+from datetime import date
 
 
 app=Flask(__name__)
@@ -24,18 +25,19 @@ blogs=db.blogs
 class global_cred:
     def __init__(self) -> None:
         self.head_username=None
+        self.display_content=None
     def save(self,username):
         self.head_username=username
+    def saveBlog(self,title):
+        self.display_content=title
     
 global_cred_var=global_cred()
 
 
-        
 @app.route('/')
 @app.route('/login')
 def login():
     return render_template("login.html",username=global_cred_var.head_username)
-
 
 @app.route('/validation', methods=['GET','POST'])
 def validation():
@@ -69,22 +71,16 @@ def home():
             if x['types'] in set(pref_list):
                 arr.append(x)
         print(arr)
-        
         return render_template('home.html',username=global_cred_var.head_username.upper(), data=arr)
     else:
         return redirect('/login')
 
 
-@app.route('/reset_password')
-def reset_password():
-    pass
-            
 
+            
 @app.route('/complete_reset',methods=['GET','POST'])
 def complete_reset():
     pass
-
-
 
 
 @app.route('/signupdesc',methods=['GET','POST'])
@@ -145,11 +141,61 @@ def signing():
 
     return render_template_string(ret_msg)
 
+
+@app.route('/content/<content>')
+def success(content):
+    data=blogs.find_one({'title':content})
+    global_cred_var.saveBlog(content)
+    path=data['path']
+    file=open(path,'r')
+    content_file=file.read()
+    return render_template('display.html',title=data['title'],final_cnt=content_file,username=global_cred_var.head_username)
+
+@app.route('/submit',methods=['GET','POST'])
+@app.route('/create_blog',methods=['GET','POST'])
+def create_blog():
+    ret=None
+    if request.method=='POST':
+        title=request.form.get('title')
+        content_file=request.form.get('full_content')
+        num=random.randint(10000,99999)
+        prefix=random.choice(['algorithm','ai','c','c++','ds','java','ml','python','quantum'])
+        if prefix=='algorithm':
+            filename="blogs\\algorithms\\"+prefix+str(num)+".txt"
+        if prefix=='ai':
+            filename="blogs\\artificial_intelligence\\"+prefix+str(num)+".txt"
+        if prefix=='c':
+            filename="blogs\\c\\"+prefix+str(num)+".txt"
+        if prefix=='c++':
+            filename="blogs\\c++\\"+prefix+str(num)+".txt"
+        if prefix=='ds':
+            filename="blogs\\data_structure\\"+prefix+str(num)+".txt"
+        if prefix=='java':
+            filename="blogs\\java\\"+prefix+str(num)+".txt"
+        if prefix=='ml':
+            filename="blogs\\machine_learning\\"+prefix+str(num)+".txt"
+        if prefix=='python':
+            filename="blogs\\python\\"+prefix+str(num)+".txt"
+        if prefix=='quantum':
+            filename="blogs\\quantum_computing\\"+prefix+str(num)+".txt"
+        file_to_write=open(filename,'w')
+        file_to_write.write(content_file)
+        file_to_write.close()
+        data={'blogid':prefix+str(num),'title':title,'path':".\\"+filename,'rating':"5",'like':"1",'dislikes':"1",'types':filename.split("\\")[1],'by':global_cred_var.head_username,'on':str(date.today())}
+        blogs.insert_one(data)
+        ret="1"
+        print(global_cred_var.head_username)
+        print(user_record.find_one({'username':global_cred_var.head_username.lower()}))
+        user_record.find_one_and_update({'username':global_cred_var.head_username.lower()},{'$inc':{'no_of_publication':1}})
+        
+    return render_template('create.html',response=ret)
+
+
 ############################### home page option ############################################### 
 @app.route('/dashboard')
 def dashboard():
     a=list(user_record.find({'username':global_cred_var.head_username.lower()}))[0]
-    return render_template('dashboard.html',fn=a['fname'],ln=a['lname'],email=a['email'],github=a['github'],linkedin=a['linkedin'],dob=a['dob'],)
+    return render_template('dashboard.html',fn=a['fname'],ln=a['lname'],email=a['email'],github=a['github'],linkedin=a['linkedin'],dob=a['dob'],nop=a['no_of_publication'])
 
 @app.route('/create')
 def create():
@@ -160,129 +206,44 @@ def logout():
     global_cred_var.head_username=None
     return redirect('/login')
 
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+@app.route('/reset_password')
+def reset_password():
+
+    return render_template('otp.html')
+    
 ############################### home page option done ###############################################
 
+
+################################ Current working routing ###############################################
+
+@app.route('/sendotp',methods=['GET','POST'])
+def sendotp():
+    if request.method=='POST':
+        username=request.form.get('username')
+        username=username.lower()
+        global_cred_var.save(username)
+        otp_record.insert_one({'username':username,'otp':random.randint(100000,999999)})
+        return render_template('otp.html',username=username)
+
+@app.route('/like')
+def like():
+    blogs.find_one_and_update({'title':global_cred_var.display_content},{'$inc':{'like':1}})
+    return redirect('/content/'+global_cred_var.display_content)
+    
+@app.route('/dislike')
+def dislike():
+    blogs.find_one_and_update({'title':global_cred_var.display_content},{'$inc':{'dislikes':1}})
+    return redirect('/content/'+global_cred_var.display_content)
+
+
+#######################################################################################################
+
+
 ###################### Routing Pages End ########################### 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Write blog</title>
     <link
       href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
       rel="stylesheet"
@@ -31,12 +31,16 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="nav-brand">Blogure</div>
+      {% if response %}
+      <dialog open style="background-color: darkgoldenrod; text-align: center; color: rgb(255, 255, 255);">Submitted Successfully</dialog>
+      {% endif %}
      
     </nav>
     <br>
+    <form action="/create_blog" method="POST">
     <div class="title">
     <span class="title-text">Title Name:</span>
-    <input type="text" class="title-inp">
+    <input type="text" class="title-inp" name='title'>
     </div>
     <?php $content_row=0 ; ?>
     <div id="content-row">
@@ -44,14 +48,13 @@
       <div class="form-group">
         <label class="col-sm-2 content">Content</label>
         <div class="col-sm-10">
-          <textarea class="form-control" id="code_preview0" name="" style="height: 300px;"></textarea>
+          <textarea class="form-control" id="code_preview0" name="full_content" style="height: 300px;"></textarea>
         </div>
       </div>
     </div>
+    <input type="submit" class="btn btn-primary" value="Submit">
     <?php $content_row++; ?>
-  </div>
-  <!-- Page - Content End -->
-  </div>
+    </form>
   
   <script type="text/javascript">
     $(document).ready(function() {
