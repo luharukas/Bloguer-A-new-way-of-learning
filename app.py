@@ -11,7 +11,7 @@ from datetime import date
 app=Flask(__name__)
 
 ###################Database connection ######################
-client=MongoClient("mongodb+srv://luharukas:Qwerasdf@authentication.k68mm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+client=MongoClient("********************************************************Give your client ID**************************")
 db=client.get_database('Bloguer')
 login_record=db.Login
 user_record=db.User
